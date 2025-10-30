@@ -1,50 +1,184 @@
-# Welcome to your Expo app 👋
+# native-template — Template Expo (TypeScript + Expo Router)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este repositório é um template pronto para começar apps com Expo, TypeScript e Expo Router. Ele já vem com algumas integrações úteis (NativeWind/Tailwind, i18n, WatermelonDB, MMKV, EAS-ready) e uma estrutura de pastas pensada para apps universais (Android, iOS e Web).
 
-## Get started
+Abaixo você encontrará instruções rápidas de início, primeiros passos, descrição da estrutura de pastas e os principais comandos disponíveis neste template.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Pré-requisitos
 
-2. Start the app
+- Node.js (recomenda-se Node 18+)
+- npm ou yarn (o projeto foi criado usando npm)
+- Expo CLI / EAS CLI (para builds e publicação)
+- Android Studio / Xcode para emular (opcional)
 
-   ```bash
-   npx expo start
-   ```
+Observação: o script `android` no `package.json` usa `bunx` (se você usa Bun). Se não usa Bun, execute `npx expo run:android` diretamente.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Instalação
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1. Instale dependências:
 
-## Get a fresh project
+```bash
+npm install
+# ou, se preferir yarn
+# yarn install
+```
 
-When you're ready, run:
+2. Inicie o servidor Metro / Expo:
+
+```bash
+npm start
+# ou iniciar cliente dev (dev client):
+# npm run dev
+```
+
+3. Execute no emulador ou dispositivo:
+
+```bash
+# Android (pode exigir Bun para o script definido):
+npm run android
+
+# iOS (macOS):
+npm run ios
+
+# Web:
+npm run web
+```
+
+Se algum comando falhar por causa do uso de `bunx`, tente `npx expo run:android` ou `npx expo run:ios`.
+
+---
+
+## Principais scripts (do `package.json`)
+
+- `npm start` — inicia o Metro / Expo Dev Tools
+- `npm run dev` — inicia com o dev client (útil para builds de desenvolvimento com EAS)
+- `npm run android` — compila/instala no dispositivo/emulador Android
+- `npm run ios` — compila/instala no simulador iOS
+- `npm run web` — executa a versão web
+- `npm run reset-project` — move o código de exemplo para `app-example` e cria uma pasta `app` vazia (útil para começar um novo projeto a partir do template)
+- `npm run lint` — executa o linter (ESLint)
+- `npm run build:dev` / `build:preview` / `build:prod` — scripts prontos para `eas build` com perfis já definidos
+- `npm run submit:android` / `submit:ios` — envia a build mais recente com `eas submit`
+
+---
+
+## Primeiros passos (recomendado)
+
+1. Rode `npm install` e `npm start`.
+2. Abra `app/_layout.tsx` e entenda o ponto de entrada do Expo Router (layouts e navegação ficam aqui).
+3. Edite ou crie rotas dentro da pasta `app/` (o sistema é file-based routing do Expo Router). Arquivos e subpastas se transformam em rotas automaticamente.
+4. Para estilos rápidos, use classes Tailwind via NativeWind (config em `tailwind.config.js`).
+5. Para traduções, veja `src/i18n.ts` e a pasta `src/locales/`.
+6. Se planeja usar banco local, dê uma olhada em `src/database/` (models, migrations e schemas já presentes).
+
+---
+
+## Estrutura principal de pastas
+
+- `app/` — rotas do Expo Router (ponto de entrada do app). Modifique aqui para alterar telas e navegação.
+- `src/` — código-fonte principal
+  - `components/` — componentes reutilizáveis e UI
+  - `assets/` — imagens e recursos estáticos
+  - `constants/` — constantes do app (tema, cores, etc.)
+  - `database/` — configuração do WatermelonDB, modelos e migrations
+  - `hooks/` — hooks customizados (autenticação, tema, etc.)
+  - `lib/` — utilitários e configurações (ex.: `config.ts`, `fakeAuth.ts`)
+  - `locales/` — arquivos de tradução (i18n)
+  - `services/` — serviços locais ou integrações com APIs
+  - `types/` — tipos TypeScript e declarações
+- `android/`, `ios/` — projetos nativos gerados pelo Expo (quando aplicável)
+- `scripts/` — scripts utilitários do repositório (`reset-project.js`)
+
+Arquivos de configuração importantes:
+- `package.json` — scripts e dependências
+- `tsconfig.json` — configuração TypeScript
+- `tailwind.config.js` — configuração do Tailwind / NativeWind
+- `metro.config.js`, `babel.config.js` — configs do bundler/transpilador
+
+---
+
+## Integrações e funcionalidades incluídas
+
+- Expo Router — roteamento baseado em arquivos para Expo
+- TypeScript — tipagem estática
+- NativeWind / Tailwind CSS para estilos declarativos
+- WatermelonDB — banco local rápido e escalável (em `src/database/`)
+- react-native-mmkv — armazenamento rápido local
+- i18next + react-i18next — internacionalização (veja `src/i18n.ts` e `src/locales/`)
+- EAS (Expo Application Services) — scripts prontos para build e submit
+
+---
+
+## Dicas úteis
+
+- Se for publicar com EAS, instale e configure o `eas-cli` e faça login com sua conta Expo.
+- Para testes rápidos em dispositivo físico, use o QR code do Expo Dev Tools (após `npm start`).
+- No desenvolvimento Android/iOS nativo com `expo run:android`/`expo run:ios`, verifique se SDKs/NDKs e variáveis de ambiente do Android estão configuradas.
+- O comando `npm run reset-project` é útil para começar com o template limpo — ele move o código exemplo para `app-example`.
+- Para editar traduções, edite os arquivos dentro de `src/locales/{lang}/translation.json`.
+- Caso precise trocar a configuração de ambiente, verifique arquivos que usam `dotenv` e `src/lib/config.ts`.
+
+---
+
+## Contribuição
+
+Você pode usar este template como base para novos projetos — sinta-se à vontade para:
+
+- Adaptar a estrutura de pastas conforme as necessidades do projeto
+- Remover libs que não usa e ajustar `package.json`
+- Atualizar o `tailwind.config.js` e `src/constants/theme.ts` para o seu sistema de design
+
+---
+
+## Comandos rápidos
+
+Instalar dependências:
+
+```bash
+npm install
+```
+
+Iniciar desenvolvimento:
+
+```bash
+npm start
+# ou (dev client):
+npm run dev
+```
+
+Compilar e rodar em Android / iOS / Web:
+
+```bash
+npm run android
+npm run ios
+npm run web
+```
+
+Resetar o template (cria `app-example` e uma `app` vazia):
 
 ```bash
 npm run reset-project
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Builds e envio com EAS:
 
-## Learn more
+```bash
+npm run build:dev
+npm run build:preview
+npm run build:prod
+npm run submit:android
+npm run submit:ios
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Se quiser, posso também:
+- Ajustar o README com comandos alternativos para quem não usa npm (yarn / pnpm / bun)
+- Incluir passos detalhados para configurar EAS (conta, credenciais) ou Android Studio
+- Gerar um checklist de onboarding para novos desenvolvedores
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Se quiser que eu aplique alguma dessas opções, diga qual e eu atualizo o README.

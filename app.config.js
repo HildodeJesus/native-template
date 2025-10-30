@@ -12,7 +12,7 @@ export default {
     newArchEnabled: true,
     ios: {
       supportsTablet: true,
-      "bundleIdentifier": "com.nivopay.app",
+      bundleIdentifier: "com.nivopay.app",
     },
     android: {
       adaptiveIcon: {
@@ -32,6 +32,7 @@ export default {
     },
     plugins: [
       "expo-router",
+      "expo-localization",
       [
         "expo-splash-screen",
         {
@@ -53,6 +54,9 @@ export default {
       encryptionKey: process.env.ENCRYPTION_KEY,
       env: process.env.NODE_ENV,
       databaseName: process.env.DATABASE_NAME,
+      eas: {
+          projectId: process.env.PROJECT_ID,
+      }
     },
   },
 };
