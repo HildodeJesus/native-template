@@ -1,0 +1,61 @@
+/* biome-ignore lint/suspicious/noUnknownAtRules: @tailwind é válido no Tailwind */
+@tailwind base;
+/* biome-ignore lint/suspicious/noUnknownAtRules: @tailwind é válido no Tailwind */
+@tailwind components;
+/* biome-ignore lint/suspicious/noUnknownAtRules: @tailwind é válido no Tailwind */
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 242 61% 52%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 14% 92%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 222 10% 45%;
+    --accent: 280 65% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
+    --ring: 242 61% 52%;
+    --radius: 0.625rem;
+    --chart-1: 217 91% 60%; /* Azul principal */
+    --chart-2: 280 65% 60%; /* Roxo */
+    --chart-3: 160 60% 45%; /* Verde água */
+    --chart-4: 30 85% 55%; /* Laranja */
+    --chart-5: 340 75% 55%; /* Rosa */
+  }
+
+  .dark:root {
+    --background: 222 47% 7%;
+    --foreground: 210 20% 98%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 20% 98%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 242 61% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 25% 15%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 222 25% 15%;
+    --muted-foreground: 220 15% 65%;
+    --accent: 280 65% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 55%;
+    --border: 222 25% 15%;
+    --input: 222 25% 15%;
+    --ring: 242 61% 60%;
+    --chart-1: 217 91% 65%;
+    --chart-2: 280 65% 65%;
+    --chart-3: 160 60% 50%;
+    --chart-4: 30 85% 60%;
+    --chart-5: 340 75% 60%;
+  }
+}
