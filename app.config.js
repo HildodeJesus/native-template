@@ -33,6 +33,8 @@ export default {
     plugins: [
       "expo-router",
       "expo-localization",
+        "expo-font",
+        "expo-updates",
       [
         "expo-splash-screen",
         {
@@ -45,6 +47,14 @@ export default {
           },
         },
       ],
+    [
+        "expo-build-properties",
+        {
+            ios: {
+                useFrameworks: "static",
+            },
+        },
+    ],
     ],
     experiments: {
       typedRoutes: true,
