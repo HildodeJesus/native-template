@@ -7,4 +7,7 @@ export const AppConfig: (typeof configApp)["expo"]["extra"] = {
   encryptionKey: extra.encryptionKey || "fallback-key",
   env: extra.env || "development",
   databaseName: extra.databaseName,
+  eas: extra.eas,
+  sentryAuthToken: extra.sentryAuthToken,
+  sentryAuthUrl: extra.sentryAuthUrl,
 };

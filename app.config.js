@@ -12,7 +12,7 @@ export default {
     newArchEnabled: true,
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.nivopay.app",
+      bundleIdentifier: "com.nativetemp.app",
     },
     android: {
       adaptiveIcon: {
@@ -35,6 +35,14 @@ export default {
       "expo-localization",
       "expo-font",
       "expo-updates",
+      [
+        "@sentry/react-native/expo",
+        {
+          url: "https://sentry.io/",
+          project: process.env.SENTRY_PROJECT,
+          organization: process.env.SENTRY_ORG,
+        },
+      ],
       [
         "expo-splash-screen",
         {
@@ -64,6 +72,8 @@ export default {
       encryptionKey: process.env.ENCRYPTION_KEY,
       env: process.env.NODE_ENV,
       databaseName: process.env.DATABASE_NAME,
+      sentryAuthToken: process.env.SENTRY_AUTH_TOKEN,
+      sentryAuthUrl: process.env.SENTRY_AUTH_URL,
       eas: {
         projectId: process.env.PROJECT_ID,
       },
