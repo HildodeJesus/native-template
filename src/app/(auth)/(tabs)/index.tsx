@@ -1,11 +1,11 @@
-import { Platform } from "react-native";
-import { Link } from "expo-router";
 import { Image } from "expo-image";
+import { Link } from "expo-router";
+import { Platform } from "react-native";
 
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
-import { ThemedView } from "@/components/themed-view";
 import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
 
 export default function HomeScreen() {
   return (

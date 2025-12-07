@@ -1,6 +1,6 @@
 import { appSchema, tableSchema } from "@nozbe/watermelondb";
-import { PostSchema } from "./post.schema";
 import { CommentSchema } from "./comments.schema";
+import { PostSchema } from "./post.schema";
 
 export default appSchema({
   version: 1,

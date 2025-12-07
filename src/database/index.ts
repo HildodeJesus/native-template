@@ -1,12 +1,12 @@
-import { Platform } from "react-native";
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+import { Platform } from "react-native";
 
 import { AppConfig } from "@/lib/config";
-import schema from "./schemas";
 import migrations from "./migration";
-import { Post } from "./models/post";
 import { Comment } from "./models/comment";
+import { Post } from "./models/post";
+import schema from "./schemas";
 
 const adapter = new SQLiteAdapter({
   schema,

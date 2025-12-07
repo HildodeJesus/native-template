@@ -1,3 +1,5 @@
+import * as React from 'react';
+import { Pressable, type TextInput, View } from 'react-native';
 import { SocialConnections } from '@/components/social-connections';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,8 +13,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Text } from '@/components/ui/text';
-import * as React from 'react';
-import { Pressable, TextInput, View } from 'react-native';
 
 export function SignUpForm() {
   const passwordInputRef = React.useRef<TextInput>(null);

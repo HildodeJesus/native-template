@@ -1,3 +1,5 @@
+import * as React from "react";
+import { Pressable, type TextInput, View } from "react-native";
 import { SocialConnections } from "@/components/social-connections";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,11 +13,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Text } from "@/components/ui/text";
-import * as React from "react";
-import { Pressable, type TextInput, View } from "react-native";
+import {useTranslation} from "../hooks/use-translation";
 
 export function SignInForm() {
   const passwordInputRef = React.useRef<TextInput>(null);
+    const  {t}= useTranslation()
+
 
   function onEmailSubmitEditing() {
     passwordInputRef.current?.focus();
@@ -26,7 +29,7 @@ export function SignInForm() {
   }
 
   return (
-    <View className="gap-6">
+    <View className="gap-6">d
       <Card className="border-border/0 sm:border-border shadow-none sm:shadow-sm sm:shadow-black/5">
         <CardHeader>
           <CardTitle className="text-center text-xl sm:text-left">

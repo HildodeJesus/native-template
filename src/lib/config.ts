@@ -1,5 +1,5 @@
 import Constants from "expo-constants";
-import configApp from "../../app.config";
+import type configApp from "../../app.config";
 
 const extra = Constants.expoConfig?.extra ?? {};
 

@@ -1,9 +1,10 @@
 // src/context/AuthContext.tsx
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { fakeSignIn, fakeSignOut } from "../lib/fakeAuth";
+import type React from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Toast } from "toastify-react-native";
-import {IUser} from "../types/user";
+import { fakeSignIn, fakeSignOut } from "../lib/fakeAuth";
 import {authStorage} from "../lib/storage";
+import type {IUser} from "../types/user";
 
 type AuthState = {
   user: IUser | null;

@@ -10,10 +10,10 @@ import { PortalHost } from "@rn-primitives/portal";
 import ToastManager from "toastify-react-native";
 
 import "../global.css";
-import { AuthProvider } from "../hooks/use-auth";
 import { useColorScheme } from "react-native";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { AuthProvider } from "../hooks/use-auth";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();

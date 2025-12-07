@@ -1,6 +1,6 @@
-import { SignInForm } from "@/components/sign-in-form";
 import { Animated, View } from "react-native";
 import { useKeyboardAnimation } from "react-native-keyboard-controller";
+import { SignInForm } from "@/components/sign-in-form";
 
 export default function SiginIn() {
   const { height } = useKeyboardAnimation();

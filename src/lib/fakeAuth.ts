@@ -1,4 +1,4 @@
-import { IUser } from "@/types/user";
+import type { IUser } from "@/types/user";
 
 const FAKE_USERS: IUser[] = [
   { name: "Hildon", email: "hildon@example.com", password: "123123" },
