@@ -1,5 +1,5 @@
-import {LocaleDashboard} from "../types/dashboard";
+import { LocaleDashboard } from "../types/dashboard";
 
 export const dashboard: LocaleDashboard = {
-    welcome: "Bem-vindo, {{name}}!"
-}
+  welcome: "Bem-vindo, {{name}}!",
+};

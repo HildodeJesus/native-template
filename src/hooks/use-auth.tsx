@@ -3,8 +3,8 @@ import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Toast } from "toastify-react-native";
 import { fakeSignIn, fakeSignOut } from "../lib/fakeAuth";
-import {authStorage} from "../lib/storage";
-import type {IUser} from "../types/user";
+import { authStorage } from "../lib/storage";
+import type { IUser } from "../types/user";
 
 type AuthState = {
   user: IUser | null;
@@ -13,18 +13,13 @@ type AuthState = {
 };
 
 type AuthContextValue = AuthState & {
-  signIn: (
-    email: string,
-    password: string,
-  ) => Promise<{ ok: boolean; message?: string }>;
+  signIn: (email: string, password: string) => Promise<{ ok: boolean; message?: string }>;
   signOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [token, setToken] = useState<string | null>(null);
   // Start as loading=true so consumers/layouts don't try to navigate before

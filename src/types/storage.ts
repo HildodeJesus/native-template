@@ -1,5 +1,5 @@
-import type {Languages} from "../locales";
-import type {IUser} from "./user";
+import type { Languages } from "../locales";
+import type { IUser } from "./user";
 
 export interface AuthStorageSchema {
   token: string;
@@ -7,5 +7,5 @@ export interface AuthStorageSchema {
 }
 
 export interface GeneralStorageSchema {
-    language: Languages;
+  language: Languages;
 }

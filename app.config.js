@@ -33,8 +33,8 @@ export default {
     plugins: [
       "expo-router",
       "expo-localization",
-        "expo-font",
-        "expo-updates",
+      "expo-font",
+      "expo-updates",
       [
         "expo-splash-screen",
         {
@@ -47,14 +47,14 @@ export default {
           },
         },
       ],
-    [
+      [
         "expo-build-properties",
         {
-            ios: {
-                useFrameworks: "static",
-            },
+          ios: {
+            useFrameworks: "static",
+          },
         },
-    ],
+      ],
     ],
     experiments: {
       typedRoutes: true,
@@ -65,8 +65,8 @@ export default {
       env: process.env.NODE_ENV,
       databaseName: process.env.DATABASE_NAME,
       eas: {
-          projectId: process.env.PROJECT_ID,
-      }
+        projectId: process.env.PROJECT_ID,
+      },
     },
   },
 };

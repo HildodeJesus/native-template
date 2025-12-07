@@ -1,18 +1,12 @@
-import * as React from 'react';
-import { Pressable, type TextInput, View } from 'react-native';
-import { SocialConnections } from '@/components/social-connections';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Text } from '@/components/ui/text';
+import * as React from "react";
+import { Pressable, type TextInput, View } from "react-native";
+import { SocialConnections } from "@/components/social-connections";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { Text } from "@/components/ui/text";
 
 export function SignUpForm() {
   const passwordInputRef = React.useRef<TextInput>(null);
@@ -66,11 +60,12 @@ export function SignUpForm() {
             </Button>
           </View>
           <Text className="text-center text-sm">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Pressable
               onPress={() => {
                 // TODO: Navigate to sign in screen
-              }}>
+              }}
+            >
               <Text className="text-sm underline underline-offset-4">Sign in</Text>
             </Pressable>
           </Text>

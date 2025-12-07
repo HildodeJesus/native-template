@@ -1,8 +1,8 @@
-import type {AppLocales} from "../types";
-import {dashboard} from "./dashboard";
+import type { AppLocales } from "../types";
+import { dashboard } from "./dashboard";
 
- const pt: AppLocales ={
-    dashboard: dashboard
-}
+const pt: AppLocales = {
+  dashboard: dashboard,
+};
 
-export default pt
+export default pt;

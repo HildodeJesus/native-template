@@ -5,10 +5,7 @@ import { ThemedView } from "@/components/themed-view";
 export default function ModalScreen() {
   return (
     <ThemedView className="flex-1 items-center justify-center p-5 bg-background">
-      <ThemedText
-        type="title"
-        className="text-2xl font-semibold text-foreground"
-      >
+      <ThemedText type="title" className="text-2xl font-semibold text-foreground">
         This is a modal
       </ThemedText>
 

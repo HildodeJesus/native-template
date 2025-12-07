@@ -1,7 +1,7 @@
 export type LocaleDashboard = {
-    welcome: string
-}
+  welcome: string;
+};
 
 export const DashboardPlaceholders = {
-    welcome: { name: "string" }
-}
+  welcome: { name: "string" },
+};
