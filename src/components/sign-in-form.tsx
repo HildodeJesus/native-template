@@ -1,18 +1,12 @@
 import * as React from "react";
-import { Pressable, type TextInput, View } from "react-native";
-import { SocialConnections } from "@/components/social-connections";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Text } from "@/components/ui/text";
+import {Pressable, type TextInput, View} from "react-native";
+import {SocialConnections} from "@/components/social-connections";
+import {Button} from "@/components/ui/button";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle,} from "@/components/ui/card";
+import {Input} from "@/components/ui/input";
+import {Label} from "@/components/ui/label";
+import {Separator} from "@/components/ui/separator";
+import {Text} from "@/components/ui/text";
 import {useTranslation} from "../hooks/use-translation";
 
 export function SignInForm() {
@@ -24,7 +18,7 @@ export function SignInForm() {
     passwordInputRef.current?.focus();
   }
 
-  function onSubmit() {
+   function onSubmit() {
     // TODO: Submit form and navigate to protected screen if successful
   }
 
@@ -36,7 +30,7 @@ export function SignInForm() {
             Sign in to your app
           </CardTitle>
           <CardDescription className="text-center sm:text-left">
-            Welcome back! Please sign in to continue
+              {t("dashboard.welcome")}! Please sign in to continue
           </CardDescription>
         </CardHeader>
         <CardContent className="gap-6">

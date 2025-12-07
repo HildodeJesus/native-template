@@ -1,25 +1,59 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
-    "root": true,
-    "linter": {
-      "enabled": true,
-      "rules": {
-        "recommended": true,
-        "a11y": {
-          "useKeyWithClickEvents": "off"
-        }
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "root": true,
+
+  "files": {
+    "includes": ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    "excludes": [
+      "node_modules",
+      ".expo",
+      "dist",
+      "build",
+      ".expo-shared",
+      "android",
+      "ios"
+    ]
+  },
+
+  "formatter": {
+    "enabled": true,
+    "lineWidth": 90,
+    "indentStyle": "tab",
+    "indentWidth": 4
+  },
+
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+
+      "a11y": {
+        "useKeyWithClickEvents": "off",
+        "noNoninteractiveTabindex": "off",
+        "noAutofocus": "off"
+      },
+
+      "style": {
+        "useShorthandFunctionType": "off"
+      },
+
+      "complexity": {
+        "noUselessEmptyExport": "off"
       }
-    },
-    "formatter": {
-      "enabled": false,
-      "lineWidth": 90,
-      "indentStyle": "tab",
-      "indentWidth": 4
-    },
-    "vcs": {
-      "enabled": true,
-      "clientKind": "git",
-      "useIgnoreFile": true,
-      "defaultBranch": "main"
     }
+  },
+
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semiColons": "asNeeded"
+    }
+  },
+
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  }
 }

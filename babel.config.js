@@ -6,8 +6,17 @@ module.exports = (api) => {
       "nativewind/babel",
     ],
     plugins: [
+      [
+          "module-resolver",
+          {
+              root: ["./src"],
+              alias: {
+                  "@": "./src",
+              },
+          },
+      ],
       ["@babel/plugin-proposal-decorators", { legacy: true }],
-      "react-native-reanimated/plugin",
-    ],
+       "react-native-reanimated/plugin",
+  ],
   };
 };
