@@ -11,7 +11,7 @@ export async function fakeSignIn(email: string, password: string) {
 
   // regra simples: qualquer senha "1234" passa
   const user = FAKE_USERS.find((u) => u.email === email);
-  if (!user || password !== "1234") {
+  if (!user || password !== user.password) {
     return { ok: false, status: 401, message: "Credenciais inválidas" };
   }
 

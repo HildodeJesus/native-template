@@ -1,13 +1,27 @@
 import { Image } from "expo-image";
 import { Link } from "expo-router";
-import { Platform } from "react-native";
-
+import { Platform, View } from "react-native";
 import { HelloWave } from "@/components/hello-wave";
 import ParallaxScrollView from "@/components/parallax-scroll-view";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useAuth } from "@/hooks/use-auth";
+import { useLocaleSwitcher } from "@/hooks/use-locale-switcher";
+import { useTranslation } from "@/hooks/use-translation";
+import { Languages } from "@/locales";
 
 export default function HomeScreen() {
+  const { currentLanguage, setLanguage } = useLocaleSwitcher();
+  const { user } = useAuth();
+  const { t } = useTranslation();
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
@@ -19,9 +33,26 @@ export default function HomeScreen() {
       }
     >
       {/* Título */}
-      <ThemedView className="flex-row items-center gap-2">
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+      <ThemedView className="flex-row items-center justify-between gap-2">
+        <View>
+          <ThemedText type="title">
+            {t("dashboard.welcome", { name: user?.name ?? "" })}!
+          </ThemedText>
+          <HelloWave />
+        </View>
+        <Select
+          onValueChange={(e) => setLanguage(e?.value as Languages)}
+          value={{ value: currentLanguage, label: currentLanguage.toUpperCase() }}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder={"selecione a liguagem"} />
+          </SelectTrigger>
+          <SelectContent>
+            {Object.values(Languages).map((language) => (
+              <SelectItem key={language} value={language} label={language.toUpperCase()} />
+            ))}
+          </SelectContent>
+        </Select>
       </ThemedView>
 
       {/* Step 1 */}

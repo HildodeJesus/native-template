@@ -12,9 +12,11 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { PageLoading } from "@/components/page-loading";
 import { AuthProvider } from "@/hooks/use-auth";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { initI18n } from "@/i18n";
 import { AppConfig } from "@/lib/config";
+import { NAV_THEME } from "@/lib/theme";
 
 Sentry.init({
   dsn: AppConfig.sentryAuthUrl,
@@ -23,6 +25,7 @@ Sentry.init({
 
 function RootLayout() {
   const [ready, setReady] = useState(false);
+  const colorScheme = useColorScheme();
 
   useEffect(() => {
     initI18n().then(() => setReady(true));
@@ -32,7 +35,12 @@ function RootLayout() {
     <ThemeProvider>
       <AuthProvider>
         <KeyboardProvider>
-          <SafeAreaView>
+          <SafeAreaView
+            style={{
+              flex: 1,
+              backgroundColor: NAV_THEME[colorScheme ?? "dark"].colors.background,
+            }}
+          >
             <Slot />
           </SafeAreaView>
           <PortalHost />
