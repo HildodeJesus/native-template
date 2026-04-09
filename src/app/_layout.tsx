@@ -18,10 +18,23 @@ import { initI18n } from "@/i18n";
 import { AppConfig } from "@/lib/config";
 import { NAV_THEME } from "@/lib/theme";
 
+
 Sentry.init({
+  // dsn: "https://4e0dda05975ecfc761adbad1f6a8d00d@o4509469884678144.ingest.us.sentry.io/4509469891559424",
   dsn: AppConfig.sentryAuthUrl,
+
+  // Adds more context data to events (IP address, cookies, user, etc.)
+  // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
   sendDefaultPii: true,
+
+  // Enable Logs
+  enableLogs: true,
+
+  // uncomment the line below to enable Spotlight (https://spotlightjs.com)
+  // spotlight: __DEV__,
 });
+
+
 
 function RootLayout() {
   const [ready, setReady] = useState(false);

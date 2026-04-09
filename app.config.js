@@ -38,10 +38,10 @@ export default {
       [
         "@sentry/react-native/expo",
         {
-          url: "https://sentry.io/",
-          project: process.env.SENTRY_PROJECT,
-          organization: process.env.SENTRY_ORG,
-        },
+          "url": "https://sentry.io/",
+          "project": "react-native",
+          "organization": "donghua-no-sekai"
+        }
       ],
       [
         "expo-splash-screen",
@@ -53,7 +53,7 @@ export default {
           dark: {
             backgroundColor: "#000000",
           },
-        },
+        }
       ],
       [
         "expo-build-properties",
