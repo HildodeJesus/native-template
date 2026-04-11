@@ -35,13 +35,15 @@ export default {
       "expo-localization",
       "expo-font",
       "expo-updates",
+      "@sentry/react-native",
+      "expo-web-browser",
       [
         "@sentry/react-native/expo",
         {
-          "url": "https://sentry.io/",
-          "project": "react-native",
-          "organization": "donghua-no-sekai"
-        }
+          url: "https://sentry.io/",
+          project: "react-native",
+          organization: "donghua-no-sekai",
+        },
       ],
       [
         "expo-splash-screen",
@@ -53,7 +55,7 @@ export default {
           dark: {
             backgroundColor: "#000000",
           },
-        }
+        },
       ],
       [
         "expo-build-properties",
