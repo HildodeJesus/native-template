@@ -37,3 +37,14 @@ export function isApiResponse(
         Array.isArray(response.error.errors)))
   );
 }
+
+export function createSimpleApiError(title: string, message: string): ApiErrorResponse {
+  return {
+    success: false,
+    error: {
+      message: message,
+      title: title,
+      errors: [],
+    },
+  };
+}
