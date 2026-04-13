@@ -8,7 +8,7 @@ const internalConfig: InternalConfigType =
   Constants.expoConfig?.extra?.internal ?? {};
 
 const configSchema = z.object({
-  encryptionKey: z.string(),
+  encryptionKey: z.string().max(16),
   env: z.enum(["development", "production"]),
   databaseName: z.string(),
   sentryAuthToken: z.string().optional(),
