@@ -85,5 +85,11 @@ export default {
         projectId: process.env.PROJECT_ID,
       },
     },
+    updates: {
+      url: `https://u.expo.dev/${process.env.PROJECT_ID}`,
+    },
+    runtimeVersion: {
+      policy: "appVersion",
+    },
   },
 };
