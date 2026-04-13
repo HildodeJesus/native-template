@@ -37,6 +37,7 @@ export default {
       "expo-updates",
       "@sentry/react-native",
       "expo-web-browser",
+      "expo-dev-client",
       [
         "@sentry/react-native/expo",
         {
