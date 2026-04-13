@@ -73,11 +73,14 @@ export default {
       tsconfigPaths: true,
     },
     extra: {
-      encryptionKey: process.env.ENCRYPTION_KEY,
-      env: process.env.NODE_ENV,
-      databaseName: process.env.DATABASE_NAME,
-      sentryAuthToken: process.env.SENTRY_AUTH_TOKEN,
-      sentryAuthUrl: process.env.SENTRY_AUTH_URL,
+      internal: {
+        env: process.env.NODE_ENV,
+        encryptionKey: process.env.ENCRYPTION_KEY,
+        databaseName: process.env.DATABASE_NAME,
+        sentryAuthToken: process.env.SENTRY_AUTH_TOKEN,
+        sentryAuthUrl: process.env.SENTRY_AUTH_URL,
+        baseApiUrl: process.env.BASE_API_URL,
+      },
       eas: {
         projectId: process.env.PROJECT_ID,
       },

@@ -1,13 +1,19 @@
 import Constants from "expo-constants";
 import type configApp from "../../app.config";
+import { z } from "zod";
 
-const extra = Constants.expoConfig?.extra ?? {};
+type InternalConfigType = (typeof configApp)["expo"]["extra"]["internal"];
 
-export const AppConfig: (typeof configApp)["expo"]["extra"] = {
-  encryptionKey: extra.encryptionKey || "fallback-key",
-  env: extra.env || "development",
-  databaseName: extra.databaseName,
-  eas: extra.eas,
-  sentryAuthToken: extra.sentryAuthToken,
-  sentryAuthUrl: extra.sentryAuthUrl,
-};
+const internalConfig: InternalConfigType =
+  Constants.expoConfig?.extra?.internal ?? {};
+
+const configSchema = z.object({
+  encryptionKey: z.string(),
+  env: z.enum(["development", "production"]),
+  databaseName: z.string(),
+  sentryAuthToken: z.string().optional(),
+  sentryAuthUrl: z.string().optional(),
+  baseApiUrl: z.string().optional(),
+});
+
+export const appConfig = configSchema.parse(internalConfig);
