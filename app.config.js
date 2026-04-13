@@ -41,8 +41,8 @@ export default {
         "@sentry/react-native/expo",
         {
           url: "https://sentry.io/",
-          project: "react-native",
-          organization: "donghua-no-sekai",
+          project: process.env.SENTRY_PROJECT,
+          organization: process.env.SENTRY_ORG,
         },
       ],
       [
@@ -51,6 +51,7 @@ export default {
           image: "./src/assets/images/splash-icon.png",
           imageWidth: 200,
           resizeMode: "contain",
+
           backgroundColor: "#ffffff",
           dark: {
             backgroundColor: "#000000",
