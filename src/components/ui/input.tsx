@@ -1,32 +1,47 @@
-import { Platform, TextInput, type TextInputProps } from "react-native";
+import type React from "react";
+import { Platform, TextInput, type TextInputProps, View } from "react-native";
 import { cn } from "@/lib/utils";
 
-function Input({
-  className,
-  placeholderClassName,
-  ...props
-}: TextInputProps & React.RefAttributes<TextInput>) {
+interface InputProps extends TextInputProps {
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+}
+
+function Input({ className, startContent, endContent, ...props }: InputProps) {
   return (
-    <TextInput
+    <View
       className={cn(
-        "dark:bg-input/30 border-input bg-background text-foreground flex h-10 w-full min-w-0 flex-row items-center rounded-md border px-3 py-1 text-base leading-5 shadow-sm shadow-black/5 sm:h-9",
+        "border-input bg-background text-foreground flex h-12 w-full min-w-0 flex-row items-center rounded-md border px-3 py-1 shadow-sm shadow-black/5",
         props.editable === false &&
           cn(
             "opacity-50",
-            Platform.select({ web: "disabled:pointer-events-none disabled:cursor-not-allowed" }),
+            Platform.select({
+              web: "disabled:pointer-events-none disabled:cursor-not-allowed",
+            }),
           ),
         Platform.select({
           web: cn(
-            "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground outline-none transition-[color,box-shadow] md:text-sm",
-            "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-            "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+            "transition-[color,box-shadow] focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]",
           ),
-          native: "placeholder:text-muted-foreground/50",
         }),
         className,
       )}
-      {...props}
-    />
+    >
+      {startContent && <View className="mr-2">{startContent}</View>}
+
+      <TextInput
+        {...props}
+        className={cn(
+          "flex-1 text-base leading-5 text-foreground",
+          Platform.select({
+            web: "placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground outline-none md:text-sm",
+            native: "placeholder:text-muted-foreground/50",
+          }),
+        )}
+      />
+
+      {endContent && <View className="ml-2">{endContent}</View>}
+    </View>
   );
 }
 
