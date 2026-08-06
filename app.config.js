@@ -34,6 +34,8 @@ export default {
       "expo-router",
       "expo-localization",
       "expo-font",
+      "expo-image",
+      "expo-status-bar",
       "expo-updates",
       "@sentry/react-native",
       "expo-web-browser",
