@@ -1,4 +1,5 @@
-import * as SeparatorPrimitive from "@rn-primitives/separator";
+import type React from "react";
+import { View, type ViewProps } from "react-native";
 import { cn } from "@/lib/utils";
 
 function Separator({
@@ -6,16 +7,19 @@ function Separator({
   orientation = "horizontal",
   decorative = true,
   ...props
-}: SeparatorPrimitive.RootProps & React.RefAttributes<SeparatorPrimitive.RootRef>) {
+}: ViewProps &
+  React.RefAttributes<View> & {
+    orientation?: "horizontal" | "vertical";
+    decorative?: boolean;
+  }) {
   return (
-    <SeparatorPrimitive.Root
-      decorative={decorative}
-      orientation={orientation}
+    <View
       className={cn(
         "bg-border shrink-0",
         orientation === "horizontal" ? "h-[1px] w-full" : "h-full w-[1px]",
         className,
       )}
+      role={decorative ? "none" : "separator"}
       {...props}
     />
   );

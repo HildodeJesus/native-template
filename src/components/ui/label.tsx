@@ -1,32 +1,23 @@
-import * as LabelPrimitive from "@rn-primitives/label";
-import { Platform } from "react-native";
+import { Platform, Text, View, type TextProps } from "react-native";
 import { cn } from "@/lib/utils";
 
 function Label({
   className,
-  onPress,
-  onLongPress,
-  onPressIn,
-  onPressOut,
-  disabled,
+  htmlFor,
   ...props
-}: LabelPrimitive.TextProps & React.RefAttributes<LabelPrimitive.TextRef>) {
+}: TextProps & {
+  htmlFor?: string;
+}) {
   return (
-    <LabelPrimitive.Root
+    <View
       className={cn(
         "flex select-none flex-row items-center gap-2",
         Platform.select({
           web: "cursor-default leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50",
         }),
-        disabled && "opacity-50",
       )}
-      onPress={onPress}
-      onLongPress={onLongPress}
-      onPressIn={onPressIn}
-      onPressOut={onPressOut}
-      disabled={disabled}
     >
-      <LabelPrimitive.Text
+      <Text
         className={cn(
           "text-foreground text-sm font-medium",
           Platform.select({ web: "leading-none" }),
@@ -34,7 +25,7 @@ function Label({
         )}
         {...props}
       />
-    </LabelPrimitive.Root>
+    </View>
   );
 }
 

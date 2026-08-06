@@ -2,6 +2,10 @@
   "mcpServers": {
     "Sentry": {
       "url": "https://mcp.sentry.dev/mcp/donghua-no-sekai/react-native"
+    },
+    "aniui": {
+      "command": "bunx",
+      "args": ["-y", "@aniui/mcp"]
     }
   }
 }

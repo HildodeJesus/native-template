@@ -1,7 +1,6 @@
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
-import { PortalHost } from "@rn-primitives/portal";
 import ToastManager from "toastify-react-native";
 
 import "../global.css";
@@ -18,7 +17,6 @@ import { initI18n } from "@/i18n";
 import { AppConfig } from "@/lib/config";
 import { NAV_THEME } from "@/lib/theme";
 
-
 Sentry.init({
   // dsn: "https://4e0dda05975ecfc761adbad1f6a8d00d@o4509469884678144.ingest.us.sentry.io/4509469891559424",
   dsn: AppConfig.sentryAuthUrl,
@@ -33,8 +31,6 @@ Sentry.init({
   // uncomment the line below to enable Spotlight (https://spotlightjs.com)
   // spotlight: __DEV__,
 });
-
-
 
 function RootLayout() {
   const [ready, setReady] = useState(false);
@@ -56,7 +52,6 @@ function RootLayout() {
           >
             <Slot />
           </SafeAreaView>
-          <PortalHost />
           <ToastManager />
           <StatusBar style="auto" />
         </KeyboardProvider>
