@@ -8,6 +8,7 @@
     },
     "types": ["react", "react-native"],
     "jsx": "react-jsx",
+    "ignoreDeprecations": "6.0",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": false,
     "useDefineForClassFields": false,
@@ -19,6 +20,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "app.config.js",
-    "nativewind-env.d.ts"
+    "uniwind-types.d.ts"
   ]
 }

@@ -184,13 +184,13 @@ Estrutura do projeto (visão geral)
   - `locales/` — traduções (i18n)
   - `assets/` — imagens e ícones
 - `android/`, `ios/` — projetos nativos gerados (quando aplicável)
-- configurações: `app.config.js`, `eas.json`, `babel.config.js`, `tsconfig.json`, `tailwind.config.js`
+- configurações: `app.config.js`, `eas.json`, `babel.config.js`, `metro.config.js`, `tsconfig.json`
 
 Integrações incluídas
 
 - Expo Router — navegação file-based
 - TypeScript — tipagem e configurações em `tsconfig.json`
-- NativeWind / Tailwind — utilitários de estilo (configurado em `tailwind.config.js`)
+- Uniwind / Tailwind — utilitários de estilo (configurado em `src/global.css`)
 - WatermelonDB — banco local de alta performance
 - react-native-mmkv — armazenamento rápido local
 - i18next + react-i18next — internacionalização

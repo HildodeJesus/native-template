@@ -1,6 +1,6 @@
-import { useColorScheme } from "nativewind";
 import { Image, Platform, View } from "react-native";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 import { cn } from "@/lib/utils";
 
 const SOCIAL_CONNECTION_STRATEGIES = [
@@ -22,7 +22,7 @@ const SOCIAL_CONNECTION_STRATEGIES = [
 ];
 
 export function SocialConnections() {
-  const { colorScheme } = useColorScheme();
+  const { theme } = useTheme();
 
   return (
     <View className="gap-2 sm:flex-row sm:gap-3">
@@ -40,7 +40,7 @@ export function SocialConnections() {
             <Image
               className={cn("size-4", strategy.useTint && Platform.select({ web: "dark:invert" }))}
               tintColor={Platform.select({
-                native: strategy.useTint ? (colorScheme === "dark" ? "white" : "black") : undefined,
+                native: strategy.useTint ? (theme === "dark" ? "white" : "black") : undefined,
               })}
               source={strategy.source}
             />

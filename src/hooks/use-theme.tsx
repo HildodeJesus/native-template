@@ -1,7 +1,7 @@
-import { ThemeProvider as NativeThemeProvider, Theme } from "@react-navigation/native";
-import { useColorScheme } from "nativewind";
+import { ThemeProvider as NativeThemeProvider } from "@react-navigation/native";
 import { createContext, type ReactNode, useContext, useEffect, useState } from "react";
 import { Appearance } from "react-native";
+import { Uniwind } from "uniwind";
 import { NAV_THEME, THEME } from "@/lib/theme";
 import type { ThemeColors } from "@/types/theme";
 
@@ -22,26 +22,26 @@ const ThemeContext = createContext<ThemeContextProps>({
 });
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const { setColorScheme } = useColorScheme();
   const systemTheme = Appearance.getColorScheme() ?? "light";
-  const colors = THEME[systemTheme];
 
   const [theme, setThemeState] = useState<ThemeMode>(systemTheme === "dark" ? "dark" : "light");
+  const colors = THEME[theme];
 
   const setTheme = (newTheme: ThemeMode) => {
     setThemeState(newTheme);
-    setColorScheme(newTheme);
+    Uniwind.setTheme(newTheme);
   };
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(({ colorScheme }) => {
       if (colorScheme) {
-        setThemeState(colorScheme as ThemeMode);
-        setColorScheme(colorScheme);
+        const nextTheme = colorScheme as ThemeMode;
+        setThemeState(nextTheme);
+        Uniwind.setTheme(nextTheme);
       }
     });
     return () => subscription.remove();
-  }, [setColorScheme]);
+  }, []);
 
   return (
     <NativeThemeProvider value={NAV_THEME[theme]}>
