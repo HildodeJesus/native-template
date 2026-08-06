@@ -14,12 +14,12 @@ import { AuthProvider } from "@/hooks/use-auth";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { ThemeProvider } from "@/hooks/use-theme";
 import { initI18n } from "@/i18n";
-import { AppConfig } from "@/lib/config";
 import { NAV_THEME } from "@/lib/theme";
+import AppConfig from "../../app.config";
 
 Sentry.init({
   // dsn: "https://4e0dda05975ecfc761adbad1f6a8d00d@o4509469884678144.ingest.us.sentry.io/4509469891559424",
-  dsn: AppConfig.sentryAuthUrl,
+  dsn: AppConfig.expo.extra.internal.sentryAuthUrl,
 
   // Adds more context data to events (IP address, cookies, user, etc.)
   // For more information, visit: https://docs.sentry.io/platforms/react-native/data-management/data-collected/
