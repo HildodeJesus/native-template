@@ -6,6 +6,7 @@ import ToastManager from "toastify-react-native";
 import "../global.css";
 
 import * as Sentry from "@sentry/react-native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -34,29 +35,43 @@ Sentry.init({
 
 function RootLayout() {
   const [ready, setReady] = useState(false);
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 1,
+            staleTime: 1000 * 60,
+          },
+        },
+      }),
+  );
   const colorScheme = useColorScheme();
+  const themeName = colorScheme === "light" ? "light" : "dark";
 
   useEffect(() => {
     initI18n().then(() => setReady(true));
   }, []);
 
   return ready ? (
-    <ThemeProvider>
-      <AuthProvider>
-        <KeyboardProvider>
-          <SafeAreaView
-            style={{
-              flex: 1,
-              backgroundColor: NAV_THEME[colorScheme ?? "dark"].colors.background,
-            }}
-          >
-            <Slot />
-          </SafeAreaView>
-          <ToastManager />
-          <StatusBar style="auto" />
-        </KeyboardProvider>
-      </AuthProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <AuthProvider>
+          <KeyboardProvider>
+            <SafeAreaView
+              style={{
+                flex: 1,
+                backgroundColor: NAV_THEME[themeName].colors.background,
+              }}
+            >
+              <Slot />
+            </SafeAreaView>
+            <ToastManager />
+            <StatusBar style="auto" />
+          </KeyboardProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
   ) : (
     <PageLoading />
   );
