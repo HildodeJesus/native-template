@@ -2,9 +2,9 @@
 import type React from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Toast } from "toastify-react-native";
-import { fakeSignIn, fakeSignOut } from "../lib/fakeAuth";
-import { authStorage } from "../lib/storage";
-import type { IUser } from "../types/user";
+import { fakeSignIn, fakeSignOut } from "@/lib/fakeAuth";
+import { secureStorage } from "@/lib/secure-storage";
+import type { IUser } from "@/types/user";
 
 type AuthState = {
   user: IUser | null;
@@ -34,8 +34,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     (async () => {
       try {
         setLoading(true);
-        const savedToken = authStorage.get("token");
-        const savedUser = authStorage.get("user");
+        const [savedToken, savedUser] = await Promise.all([
+          secureStorage.get("token"),
+          secureStorage.get("user"),
+        ]);
 
         // Use the freshly read values instead of stale closure values.
         setToken(savedToken ?? null);
@@ -72,8 +74,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setToken(token);
 
     // Persist both user and token so future app launches restore auth state.
-    authStorage.set("user", user);
-    authStorage.set("token", token);
+    await Promise.all([secureStorage.set("user", user), secureStorage.set("token", token)]);
 
     return { ok: true };
   };
@@ -82,8 +83,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     await fakeSignOut();
     setToken(null);
     setUser(null);
-    authStorage.remove("token");
-    authStorage.remove("user");
+    await Promise.all([secureStorage.remove("token"), secureStorage.remove("user")]);
   };
 
   return (
